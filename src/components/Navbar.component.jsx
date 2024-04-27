@@ -2,14 +2,14 @@ import NavbarItem from './NavbarItem.component';
 
 const Navbar = () => {
     return (
-        <div className='flex justify-center gap-6 dark:bg-gray-500 bg-amber-200 p-4 lg:text-lg'>
+        <div className='flex justify-center gap-14 dark:bg-gray-500 bg-amber-200 p-4 lg:text-lg'>
             <NavbarItem
-                title='Trending'
-                param='fetchTrending'
+                title='Movies'
+                param='fetchMovies'
             />
             <NavbarItem
-                title='Highest Rated'
-                param='fetchTopRated'
+                title='Series'
+                param='fetchSeries'
             />
         </div>
     );
