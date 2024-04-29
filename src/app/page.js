@@ -7,8 +7,6 @@ const Home = async ({ searchParams }) => {
 
     const moviesData = await httpGetAllMovies();
     const seriesData = await httpGetAllSeries();
-    // console.log(moviesData);
-    // console.log(seriesData);
 
     return (
         <main className='flex flex-col items-center justify-between p-24'>
