@@ -6,7 +6,7 @@ import { connectDB } from '@/config/db';
 export const GET = async () => {
     try {
         await connectDB();
-        const series = await Series.find();
+        const series = await Series.find({});
 
         return NextResponse.json({ message: 'Series Fetched Successfully!!!', series });
     } catch (error) {

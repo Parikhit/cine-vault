@@ -8,7 +8,7 @@ import { connectDB } from '@/config/db';
 export const GET = async () => {
     try {
         await connectDB();
-        const movies = await Movie.find();
+        const movies = await Movie.find({});
 
         return NextResponse.json({ message: 'Movies Fetched Successfully!!!', movies });
     } catch (error) {
