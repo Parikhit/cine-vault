@@ -1,18 +1,28 @@
-import Movies from '@/components/Movies.component';
-import { fetchData, moviesOptions } from './utils/requests';
+import Cards from '@/components/Cards.component';
+
+import { httpGetAllMovies, httpGetAllSeries } from './utils/requests';
 
 const Home = async ({ searchParams }) => {
-    const genre = searchParams.genre || 'fetchMovies';
-    const movies = await fetchData(
-        `https://imdb-top-100-movies.p.rapidapi.com/${genre === 'fetchSeries' ? 'series/' : ''}`,
-        moviesOptions
-    );
+    const genre = searchParams.genre || 'movies';
 
-    if (!movies) throw newError('Failed to fetch movies!');
+    const moviesData = await httpGetAllMovies();
+    const seriesData = await httpGetAllSeries();
+    console.log(moviesData);
+    console.log(seriesData);
 
     return (
         <main className='flex flex-col items-center justify-between p-24'>
-            <Movies movies={movies} />
+            {genre === 'movies' ? (
+                <Cards
+                    data={moviesData.movies}
+                    type={genre}
+                />
+            ) : (
+                <Cards
+                    data={seriesData.series}
+                    type={genre}
+                />
+            )}
         </main>
     );
 };

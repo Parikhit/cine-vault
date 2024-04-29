@@ -8,9 +8,11 @@ const Provider = ({ children }) => {
             defaultTheme='system'
             attribute='class'
         >
-            <div className='bg-white text-black dark:bg-black dark:text-white'>{children}</div>
+            <div className=''>{children}</div>
         </ThemeProvider>
     );
 };
 
 export default Provider;
+
+// bg-white text-black dark:bg-black dark:text-white
