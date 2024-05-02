@@ -1,22 +1,22 @@
 'use server';
 
 const httpGetAllMovies = async () => {
-    const response = await fetch(`/api/movies`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies`);
     return await response.json();
 };
 
 const httpGetAllSeries = async () => {
-    const response = await fetch(`/api/series`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/series`);
     return await response.json();
 };
 
 const httpGetSingleMovie = async (id) => {
-    const response = await fetch(`/api/movies/${id}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies/${id}`);
     return await response.json();
 };
 
 const httpGetSingleSeries = async (id) => {
-    const response = await fetch(`/api/series/${id}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/series/${id}`);
     return await response.json();
 };
 
