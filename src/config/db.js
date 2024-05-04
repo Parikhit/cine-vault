@@ -13,11 +13,16 @@ export const connectDB = async () => {
         return;
     }
 
-    mongoose
+    if (!process.env.NEXT_PUBLIC_MONGO_URI) throw new Error('MongoDB URI not provided!');
+
+    await mongoose
         .connect(process.env.NEXT_PUBLIC_MONGO_URI, {
             dbName: 'cineVault',
             bufferCommands: false,
         })
         .then(() => console.log('Connected to MongoDB!'))
-        .catch((error) => console.log('Failed to connect to MongoDb!', error));
+        .catch((error) => {
+            console.log('Failed to connect to MongoDB!', error);
+            throw error;
+        });
 };

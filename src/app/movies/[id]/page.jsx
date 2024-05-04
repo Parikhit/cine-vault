@@ -1,18 +1,29 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 import { httpGetSingleMovie } from '@/app/utils/requests';
 
 import DetailsCard from '@/components/DetailsCard.component';
-import React from 'react';
 
-const MoviesPage = async ({ params }) => {
-    const data = await httpGetSingleMovie(params.id);
+const MoviesPage = ({ params }) => {
+    const id = params.id;
 
-    const { movie, message } = data;
+    const [singleMovie, setSingleMovie] = useState({});
 
-    return (
-        <main>
-            <DetailsCard data={movie} />
-        </main>
-    );
+    useEffect(() => {
+        const getMovie = async () => {
+            const movie = await httpGetSingleMovie(id);
+
+            setSingleMovie(movie);
+            getMovie();
+        };
+    }, [id]);
+
+    const { movie, message } = singleMovie;
+    // console.log(movie);
+
+    return <main>{/* <DetailsCard data={movie} /> */}</main>;
 };
 
 export default MoviesPage;

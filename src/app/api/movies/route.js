@@ -10,6 +10,8 @@ export const GET = async () => {
         await connectDB();
         const movies = await Movie.find({});
 
+        if (!movies) return NextResponse.json('No Movies Available!!!');
+
         return NextResponse.json({ message: 'Movies Fetched Successfully!!!', movies });
     } catch (error) {
         return NextResponse.json({ message: 'Error in fetching movies', error });

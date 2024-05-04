@@ -1,3 +1,5 @@
+'use client';
+
 import Card from './Card.component';
 
 const Cards = ({ data, type }) => {
